@@ -8,7 +8,7 @@ LIB_ROOT = vendor/closure-library
 
 all : build/libphonenumber.js
 
-build/libphonenumber.js : $(COMPILER_JAR)
+build/libphonenumber.js : src/exports.js $(COMPILER_JAR)
 	$(LIB_ROOT)/closure/bin/build/closurebuilder.py \
 		--output_mode=script \
 		--root="$(LIB_ROOT)" \
@@ -16,6 +16,7 @@ build/libphonenumber.js : $(COMPILER_JAR)
 		--input="$(JS_DIR)/phonenumber.pb.js" \
 		--input="$(JS_DIR)/metadata.js" \
 		--input="$(JS_DIR)/phonenumberutil.js" \
+		--input=src/exports.js \
 		--namespace="i18n.phonenumbers.metadata" \
 		--namespace="i18n.phonenumbers.NumberFormat" \
 		--namespace="i18n.phonenumbers.PhoneNumberDesc" \
@@ -31,6 +32,7 @@ build/libphonenumber.js : $(COMPILER_JAR)
 		"$(JS_DIR)/phonenumber.pb.js" \
 		"$(JS_DIR)/metadata.js" \
 		"$(JS_DIR)/phonenumberutil.js" \
+		src/exports.js \
 		| java -jar $(COMPILER_JAR) \
 		> $@.tmp && mv $@.tmp $@
 
