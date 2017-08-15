@@ -1,0 +1,6 @@
+[submodule "vendor/closure-library"]
+	path = vendor/closure-library
+	url = https://github.com/google/closure-library.git
+[submodule "vendor/libphonenumber"]
+	path = vendor/libphonenumber
+	url = https://github.com/googlei18n/libphonenumber.git
